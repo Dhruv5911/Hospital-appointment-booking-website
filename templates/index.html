@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediBook — Hospital Booking System</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- ====== LANDING PAGE ====== -->
+    <div id="page-landing" class="page active">
+      <div class="landing-noise"></div>
+      <nav class="landing-nav">
+        <div class="landing-logo">
+          <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff" />
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          MediBook
+        </div>
+        <div class="landing-links">
+          <a href="#">Product</a>
+          <a href="#">Service</a>
+          <a href="#">Activity</a>
+          <a href="#">Support</a>
+        </div>
+        <button class="btn btn-primary" id="btn-get-started-nav">Get Started</button>
+      </nav>
+
+      <div class="hero-section">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Trusted by 500+ hospitals worldwide
+        </div>
+        <h1>Transform <span class="highlight">Healthcare</span><br />with Cutting-Edge<br />Technology</h1>
+        <p>Manage patients, staff, appointments, and more with our comprehensive, intelligent hospital system.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" id="btn-get-started-hero">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+          <button class="btn btn-ghost btn-lg" id="btn-demo">
+            <span class="play-icon">▶</span> Watch Demo
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-dashboard-wrap">
+        <div class="hero-dashboard">
+          <div class="hero-dash-inner">
+            <div class="hero-stats-row">
+              <div class="hero-stat-card">
+                <div class="hsc-icon" style="background:#fff7ed">🏥</div>
+                <div>
+                  <div class="hsc-value">2,847</div>
+                  <div class="hsc-label">Total Patients</div>
+                </div>
+              </div>
+              <div class="hero-stat-card">
+                <div class="hsc-icon" style="background:#f0fdf4">📅</div>
+                <div>
+                  <div class="hsc-value">142</div>
+                  <div class="hsc-label">Today's Appts</div>
+                </div>
+              </div>
+              <div class="hero-stat-card">
+                <div class="hsc-icon" style="background:#eff6ff">👨‍⚕️</div>
+                <div>
+                  <div class="hsc-value">38</div>
+                  <div class="hsc-label">Doctors Active</div>
+                </div>
+              </div>
+              <div class="hero-stat-card">
+                <div class="hsc-icon" style="background:#fef2f2">💊</div>
+                <div>
+                  <div class="hsc-value">96%</div>
+                  <div class="hsc-label">Pharmacy Fill</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-dash-preview">[ Live Dashboard Preview ]</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features strip -->
+      <div class="features-strip">
+        <div class="feature-item">
+          <div class="feature-icon">🏥</div>
+          <div>
+            <div class="feature-title">Find Hospitals</div>
+            <div class="feature-desc">Search & compare nearby</div>
+          </div>
+        </div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <div class="feature-icon">📅</div>
+          <div>
+            <div class="feature-title">Book Instantly</div>
+            <div class="feature-desc">Real-time slot booking</div>
+          </div>
+        </div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <div class="feature-icon">💊</div>
+          <div>
+            <div class="feature-title">Order Medicine</div>
+            <div class="feature-desc">Home delivery available</div>
+          </div>
+        </div>
+        <div class="feature-divider"></div>
+        <div class="feature-item">
+          <div class="feature-icon">🚨</div>
+          <div>
+            <div class="feature-title">Emergency AI</div>
+            <div class="feature-desc">Instant symptom check</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== AUTH PAGES ====== -->
+    <div id="page-login" class="page">
+      <div class="auth-page">
+        <div class="auth-left">
+          <div class="auth-left-content">
+            <div class="auth-brand">
+              <div class="logo-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff" />
+                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span>MediBook</span>
+            </div>
+            <h2>Your health, our priority.</h2>
+            <p>Join thousands of patients and hospitals on the platform built for modern healthcare.</p>
+            <div class="auth-features">
+              <div class="auth-feat"><span class="af-check">✓</span> Real-time appointment booking</div>
+              <div class="auth-feat"><span class="af-check">✓</span> AI-powered emergency assessment</div>
+              <div class="auth-feat"><span class="af-check">✓</span> Online pharmacy & delivery</div>
+            </div>
+          </div>
+        </div>
+        <div class="auth-right">
+          <div class="auth-card">
+            <h2>Welcome Back</h2>
+            <p class="subtitle">Sign in to your account to continue</p>
+            <form id="login-form">
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input id="login-email" type="email" class="form-control" placeholder="you@example.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Password</label>
+                <input id="login-password" type="password" class="form-control" placeholder="••••••••" required />
+              </div>
+              <div id="login-error" class="alert-error" style="display:none;"></div>
+              <button type="submit" class="btn btn-primary btn-block mt-2">Sign In →</button>
+            </form>
+            <hr class="divider" />
+            <p class="text-center auth-switch">
+              Don't have an account? <a href="#" id="go-signup">Create one</a>
+            </p>
+            <div class="demo-creds">
+              <div class="demo-creds-title">🔑 Demo Credentials</div>
+              <div class="demo-row"><span>Patient:</span> patient@example.com / patient123</div>
+              <div class="demo-row"><span>Admin:</span> admin1@hospital.com / admin123</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="page-signup" class="page">
+      <div class="auth-page">
+        <div class="auth-left">
+          <div class="auth-left-content">
+            <div class="auth-brand">
+              <div class="logo-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff" />
+                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span>MediBook</span>
+            </div>
+            <h2>Start your health journey today.</h2>
+            <p>Create a free account and get access to all MediBook features.</p>
+            <div class="auth-features">
+              <div class="auth-feat"><span class="af-check">✓</span> Free for patients</div>
+              <div class="auth-feat"><span class="af-check">✓</span> Instant hospital registration</div>
+              <div class="auth-feat"><span class="af-check">✓</span> 24/7 emergency support</div>
+            </div>
+          </div>
+        </div>
+        <div class="auth-right">
+          <div class="auth-card">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join MediBook today — it's free</p>
+            <form id="signup-form">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input id="signup-name" type="text" class="form-control" placeholder="Your Name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input id="signup-email" type="email" class="form-control" placeholder="you@example.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Password</label>
+                <input id="signup-password" type="password" class="form-control" placeholder="Min 6 characters"
+                  required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Account Type</label>
+                <select id="signup-role" class="form-control">
+                  <option value="patient">🧑‍⚕️ Patient</option>
+                  <option value="hospital_admin">🏥 Hospital Administrator</option>
+                </select>
+              </div>
+              <div id="signup-error" class="alert-error" style="display:none;"></div>
+              <button type="submit" class="btn btn-primary btn-block mt-2">Create Account →</button>
+            </form>
+            <hr class="divider" />
+            <p class="text-center auth-switch">
+              Already have an account? <a href="#" id="go-login">Sign In</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== PATIENT DASHBOARD ====== -->
+    <div id="page-patient" class="page dashboard-page">
+      <aside class="sidebar-thin">
+        <div class="sidebar-logo">
+          <div class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff" />
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="sidebar-nav" id="patient-nav">
+          <div class="nav-link active" data-section="search" title="Dashboard">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="appointments" title="Appointments">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="pharmacy" title="Pharmacy">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.5 20.5l-6-6a4.5 4.5 0 1 1 6.5-6.5l6 6a4.5 4.5 0 1 1-6.5 6.5z"></path>
+              <line x1="15.5" y1="8.5" x2="8.5" y2="15.5"></line>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="orders" title="Orders">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="emergency" title="Emergency">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="nav-link" title="Settings">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+              </path>
+            </svg>
+          </div>
+          <button class="btn-icon logout-btn" id="patient-logout-btn" title="Logout">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="dashboard-main">
+        <header class="content-header">
+          <h2 class="page-title" id="patient-page-title">Dashboard</h2>
+          <div class="header-right" id="patient-header-filters">
+            <div class="user-profile">
+              <div class="user-avatar" id="patient-user-avatar">P</div>
+              <span id="patient-user-name" class="user-name"></span>
+            </div>
+          </div>
+        </header>
+        <main class="main-content" id="patient-content"></main>
+      </div>
+    </div>
+
+    <!-- ====== HOSPITAL ADMIN DASHBOARD ====== -->
+    <div id="page-hospital" class="page dashboard-page">
+      <aside class="sidebar-thin">
+        <div class="sidebar-logo">
+          <div class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff" />
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="sidebar-nav" id="hospital-nav">
+          <div class="nav-link active" data-section="overview" title="Overview">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="profile" title="Profile">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="doctors" title="Doctors">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="slots" title="Manage Slots">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="nav-link" data-section="appointments" title="Appointments">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="nav-link" title="Settings">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+              </path>
+            </svg>
+          </div>
+          <button class="btn-icon logout-btn" id="hospital-logout-btn" title="Logout">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <div class="dashboard-main">
+        <header class="content-header">
+          <h2 class="page-title" id="hospital-page-title">Overview</h2>
+          <div class="header-right" id="hospital-header-filters">
+            <div class="user-profile">
+              <div class="user-avatar" id="hospital-user-avatar">A</div>
+              <span id="hospital-user-name" class="user-name"></span>
+            </div>
+          </div>
+        </header>
+        <main class="main-content" id="hospital-content"></main>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ====== MODALS ====== -->
+  <div id="modal-book" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>📅 Book Appointment</h3>
+        <button class="modal-close" id="modal-book-close">✕</button>
+      </div>
+      <div id="modal-book-body"></div>
+    </div>
+  </div>
+
+  <div id="modal-reschedule" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>🔄 Reschedule Appointment</h3>
+        <button class="modal-close" id="modal-reschedule-close">✕</button>
+      </div>
+      <div id="modal-reschedule-body"></div>
+    </div>
+  </div>
+
+  <div id="modal-doctor" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-doctor-title">👨‍⚕️ Add Doctor</h3>
+        <button class="modal-close" id="modal-doctor-close">✕</button>
+      </div>
+      <div id="modal-doctor-body"></div>
+    </div>
+  </div>
+
+  <div id="modal-slots" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>🕐 Add Time Slots</h3>
+        <button class="modal-close" id="modal-slots-close">✕</button>
+      </div>
+      <div id="modal-slots-body"></div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="/static/core.js"></script>
+  <script src="/static/patient.js"></script>
+  <script src="/static/pharmacy_emergency.js"></script>
+  <script src="/static/admin.js"></script>
+</body>
+
+</html>
