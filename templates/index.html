@@ -28,22 +28,17 @@
           </div>
           MediBook
         </div>
-        <div class="landing-links">
-          <a href="#">Product</a>
-          <a href="#">Service</a>
-          <a href="#">Activity</a>
-          <a href="#">Support</a>
-        </div>
+
         <button class="btn btn-primary" id="btn-get-started-nav">Get Started</button>
       </nav>
 
       <div class="hero-section">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Trusted by 500+ hospitals worldwide
+          Beginner Friendly Project
         </div>
-        <h1>Transform <span class="highlight">Healthcare</span><br />with Cutting-Edge<br />Technology</h1>
-        <p>Manage patients, staff, appointments, and more with our comprehensive, intelligent hospital system.</p>
+        <h1>My First <span class="highlight">Hospital</span><br />Booking<br />System</h1>
+        <p>A simple and interactive hospital booking application built with Flask, SQLite, and vanilla web technologies.</p>
         <div class="hero-actions">
           <button class="btn btn-primary btn-lg" id="btn-get-started-hero">
             Get Started
@@ -66,33 +61,35 @@
               <div class="hero-stat-card">
                 <div class="hsc-icon" style="background:#fff7ed">🏥</div>
                 <div>
-                  <div class="hsc-value">2,847</div>
+                  <div class="hsc-value" id="stat-total-patients">...</div>
                   <div class="hsc-label">Total Patients</div>
                 </div>
               </div>
               <div class="hero-stat-card">
                 <div class="hsc-icon" style="background:#f0fdf4">📅</div>
                 <div>
-                  <div class="hsc-value">142</div>
+                  <div class="hsc-value" id="stat-todays-appts">...</div>
                   <div class="hsc-label">Today's Appts</div>
                 </div>
               </div>
               <div class="hero-stat-card">
                 <div class="hsc-icon" style="background:#eff6ff">👨‍⚕️</div>
                 <div>
-                  <div class="hsc-value">38</div>
+                  <div class="hsc-value" id="stat-doctors-active">...</div>
                   <div class="hsc-label">Doctors Active</div>
                 </div>
               </div>
               <div class="hero-stat-card">
                 <div class="hsc-icon" style="background:#fef2f2">💊</div>
                 <div>
-                  <div class="hsc-value">96%</div>
+                  <div class="hsc-value" id="stat-pharmacy-fill">...</div>
                   <div class="hsc-label">Pharmacy Fill</div>
                 </div>
               </div>
             </div>
-            <div class="hero-dash-preview">[ Live Dashboard Preview ]</div>
+            <div class="hero-dash-preview">
+              <img src="/static/dashboard_preview.png" alt="Dashboard Preview" style="width: 100%; height: 100%; object-fit: cover; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;" />
+            </div>
           </div>
         </div>
       </div>

@@ -214,6 +214,27 @@ document.getElementById('modal-slots-close').addEventListener('click', () => clo
 });
 
 // ===== INIT =====
+async function fetchLandingStats() {
+  try {
+    const res = await fetch('/api/stats');
+    if (res.ok) {
+      const data = await res.json();
+      const elPatients = document.getElementById('stat-total-patients');
+      const elAppts = document.getElementById('stat-todays-appts');
+      const elDoctors = document.getElementById('stat-doctors-active');
+      const elPharmacy = document.getElementById('stat-pharmacy-fill');
+      
+      if (elPatients) elPatients.textContent = data.total_patients;
+      if (elAppts) elAppts.textContent = data.todays_appts;
+      if (elDoctors) elDoctors.textContent = data.doctors_active;
+      if (elPharmacy) elPharmacy.textContent = data.pharmacy_fill;
+    }
+  } catch (err) {
+    console.error('Failed to fetch stats:', err);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   navigate();
+  fetchLandingStats();
 });
