@@ -132,6 +132,7 @@ class Appointment(db.Model):
             'created_at': self.created_at.isoformat(),
             'slot_date': slot.slot_date if slot else '',
             'slot_time': slot.slot_time if slot else '',
+            'doctor_id': doctor.id if doctor else None,
             'doctor_name': doctor.name if doctor else '',
             'doctor_specialty': doctor.specialty if doctor else '',
             'hospital_name': hospital.name if hospital else '',

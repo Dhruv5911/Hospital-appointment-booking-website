@@ -12,9 +12,11 @@ jwt = JWTManager()
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def create_app(config_class=Config):
+    dist_dir = os.path.join(ROOT_DIR, 'frontend', 'dist')
     app = Flask(__name__,
-                template_folder=os.path.join(ROOT_DIR, 'templates'),
-                static_folder=os.path.join(ROOT_DIR, 'static'))
+                template_folder=dist_dir,
+                static_folder=os.path.join(dist_dir, 'assets'),
+                static_url_path='/assets')
     app.config.from_object(config_class)
 
     db.init_app(app)

@@ -1,0 +1,171 @@
+/* ═══════════════════════════════════════════════════════════
+   TopNavbar — ChatGPT-Style Header
+   ═══════════════════════════════════════════════════════════ */
+
+.topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  background: var(--glass-header-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition), background var(--transition);
+}
+
+.topnav-scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(11, 17, 32, 0.95);
+}
+
+@media (min-width: 768px) {
+  .topnav {
+    padding: 0 var(--space-6);
+  }
+}
+
+/* ─── Left Section ─────────────────────────────────────── */
+.topnav-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.topnav-hamburger {
+  display: flex;
+}
+
+/* ─── Logo ─────────────────────────────────────────────── */
+.topnav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  margin-right: var(--space-2);
+}
+
+.topnav-logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-primary);
+  flex-shrink: 0;
+}
+
+.topnav-logo-text {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+@media (max-width: 480px) {
+  .topnav-logo-text {
+    display: none;
+  }
+}
+
+/* ─── Center ───────────────────────────────────────────── */
+.topnav-center {
+  flex: 1;
+}
+
+/* ─── Right Section ────────────────────────────────────── */
+.topnav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+@media (min-width: 768px) {
+  .topnav-right {
+    gap: var(--space-2);
+  }
+}
+
+/* ─── Buttons ──────────────────────────────────────────── */
+.topnav-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.topnav-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+.topnav-search-btn {
+  margin-left: var(--space-1);
+}
+
+/* ─── Notification Dot ─────────────────────────────────── */
+.topnav-notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--danger);
+  border: 1.5px solid var(--bg-primary);
+}
+
+/* ─── Upgrade Button ───────────────────────────────────── */
+.topnav-upgrade {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 7px 16px;
+  border-radius: var(--radius-xs);
+  background: var(--accent-muted);
+  color: var(--accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  border: 1px solid rgba(0, 229, 168, 0.2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.topnav-upgrade:hover {
+  background: rgba(0, 229, 168, 0.2);
+  border-color: rgba(0, 229, 168, 0.3);
+  box-shadow: 0 0 16px rgba(0, 229, 168, 0.15);
+}
+
+/* ─── Avatar ───────────────────────────────────────────── */
+.topnav-avatar {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: var(--space-1);
+}
+
+.topnav-avatar:hover .avatar {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.topnav-avatar .avatar {
+  transition: box-shadow var(--transition-fast);
+}

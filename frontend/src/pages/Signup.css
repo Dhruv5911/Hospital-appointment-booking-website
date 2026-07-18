@@ -1,0 +1,203 @@
+/* ═══════════════════════════════════════════════════════════
+   Signup Page — Split Layout with Floating Icons
+   ═══════════════════════════════════════════════════════════ */
+
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--bg-primary);
+}
+
+.signup-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ─── LEFT PANEL ───────────────────────────────────────── */
+.signup-left {
+  width: 45%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10);
+}
+
+.signup-left-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #00E5A8 0%, #0ea5e9 50%, #8b5cf6 100%);
+  opacity: 0.12;
+}
+
+.signup-left-content {
+  position: relative;
+  z-index: 1;
+  max-width: 380px;
+}
+
+.signup-left-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--accent);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-10);
+}
+
+.signup-left-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.signup-left-text {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-8);
+}
+
+/* Floating Icons */
+.signup-floating-icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  z-index: 1;
+}
+
+/* Features */
+.signup-left-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.signup-feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+.signup-feature-check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  flex-shrink: 0;
+}
+
+/* ─── RIGHT PANEL ──────────────────────────────────────── */
+.signup-right {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.signup-right-inner {
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-4) 0;
+}
+
+.signup-form-header {
+  margin-bottom: var(--space-6);
+}
+
+.signup-form-header h1 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+.signup-form-header p {
+  color: var(--text-tertiary);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Password Strength */
+.signup-strength {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.signup-strength-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.signup-strength-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+/* Terms */
+.signup-terms-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.signup-terms-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+}
+
+.signup-terms-text a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+  }
+
+  .signup-left {
+    display: none;
+  }
+
+  .signup-right {
+    width: 100%;
+    padding: var(--space-6);
+    max-height: none;
+  }
+}

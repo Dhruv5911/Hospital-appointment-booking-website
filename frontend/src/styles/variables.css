@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════════════
+   MEDIBOOK — Design Tokens & CSS Variables
+   Premium Healthcare Platform Design System
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Color Palette ──────────────────────────────────── */
+  --bg-primary: #0B1120;
+  --bg-secondary: #111827;
+  --bg-card: #172033;
+  --bg-card-hover: #1c2740;
+  --bg-elevated: #1e293b;
+  --bg-input: #0f1729;
+
+  --accent: #00E5A8;
+  --accent-hover: #00cc96;
+  --accent-muted: rgba(0, 229, 168, 0.12);
+  --accent-glow: rgba(0, 229, 168, 0.3);
+  --accent-gradient: linear-gradient(135deg, #00E5A8 0%, #38BDF8 100%);
+
+  --secondary: #38BDF8;
+  --secondary-hover: #2ea8e0;
+  --secondary-muted: rgba(56, 189, 248, 0.12);
+
+  --danger: #EF4444;
+  --danger-hover: #dc2626;
+  --danger-muted: rgba(239, 68, 68, 0.12);
+
+  --warning: #F59E0B;
+  --warning-hover: #d97706;
+  --warning-muted: rgba(245, 158, 11, 0.12);
+
+  --success: #22c55e;
+  --success-muted: rgba(34, 197, 94, 0.12);
+
+  --purple: #8b5cf6;
+  --purple-muted: rgba(139, 92, 246, 0.12);
+
+  --pink: #ec4899;
+  --pink-muted: rgba(236, 72, 153, 0.12);
+
+  /* ─── Text Colors ────────────────────────────────────── */
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748b;
+  --text-muted: #475569;
+  --text-accent: #00E5A8;
+  --text-link: #38BDF8;
+  --text-danger: #EF4444;
+  --text-warning: #F59E0B;
+  --text-success: #22c55e;
+
+  /* ─── Borders ────────────────────────────────────────── */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --border-active: rgba(0, 229, 168, 0.4);
+  --border-danger: rgba(239, 68, 68, 0.4);
+
+  /* ─── Glassmorphism ──────────────────────────────────── */
+  --glass-bg: rgba(23, 32, 51, 0.72);
+  --glass-bg-hover: rgba(23, 32, 51, 0.85);
+  --glass-blur: 20px;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  --glass-header-bg: rgba(11, 17, 32, 0.85);
+  --glass-sidebar-bg: rgba(17, 24, 39, 0.95);
+
+  /* ─── Radius ─────────────────────────────────────────── */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* ─── Spacing ────────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ─── Typography ─────────────────────────────────────── */
+  --font-sans: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.8125rem;     /* 13px */
+  --text-base: 0.875rem;    /* 14px */
+  --text-md: 1rem;          /* 16px */
+  --text-lg: 1.125rem;      /* 18px */
+  --text-xl: 1.25rem;       /* 20px */
+  --text-2xl: 1.5rem;       /* 24px */
+  --text-3xl: 1.875rem;     /* 30px */
+  --text-4xl: 2.25rem;      /* 36px */
+  --text-5xl: 3rem;         /* 48px */
+  --text-6xl: 3.75rem;      /* 60px */
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-widest: 0.1em;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* ─── Shadows ────────────────────────────────────────── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.4);
+  --shadow-glow-accent: 0 0 20px rgba(0, 229, 168, 0.3);
+  --shadow-glow-danger: 0 0 20px rgba(239, 68, 68, 0.3);
+  --shadow-glow-secondary: 0 0 20px rgba(56, 189, 248, 0.3);
+
+  /* ─── Transitions ────────────────────────────────────── */
+  --transition-fast: 150ms ease;
+  --transition: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ─── Z-Index Scale ──────────────────────────────────── */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 30;
+  --z-sidebar: 40;
+  --z-header: 50;
+  --z-modal: 60;
+  --z-toast: 70;
+  --z-tooltip: 80;
+
+  /* ─── Layout ─────────────────────────────────────────── */
+  --header-height: 64px;
+  --sidebar-width: 280px;
+  --max-width: 1280px;
+  --max-width-lg: 1440px;
+}
+
+[data-theme="light"] {
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #F1F5F9;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FAFC;
+  --bg-elevated: #FFFFFF;
+  --bg-input: #FFFFFF;
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #64748B;
+  --text-muted: #94A3B8;
+
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.15);
+
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg-hover: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  
+  --glass-header-bg: rgba(248, 250, 252, 0.85);
+  --glass-sidebar-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* ─── Google Fonts Import ──────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');

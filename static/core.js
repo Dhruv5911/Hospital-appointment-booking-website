@@ -6,7 +6,7 @@ const API = {
     const headers = { 'Content-Type': 'application/json' };
     if (auth) {
       const token = localStorage.getItem('token');
-      if (token) headers['Authorization'] = `Bearer ${token}`;
+      if (token) headers.Authorization = `Bearer ${token}`;
     }
     const opts = { method, headers };
     if (body) opts.body = JSON.stringify(body);
@@ -58,8 +58,8 @@ const State = {
 
   addToCart(medicine) {
     const existing = this.cart.find(i => i.medicine_id === medicine.id);
-    if (existing) { existing.qty += 1; }
-    else { this.cart.push({ medicine_id: medicine.id, name: medicine.name, price: medicine.price, qty: 1 }); }
+    if (existing) existing.qty += 1;
+    else this.cart.push({ medicine_id: medicine.id, name: medicine.name, price: medicine.price, qty: 1 });
     this.saveCart();
   },
 
@@ -76,10 +76,11 @@ const State = {
 // ===== TOAST =====
 function toast(message, type = 'info') {
   const container = document.getElementById('toast-container');
+  if (!container) return;
   const el = document.createElement('div');
   el.className = `toast ${type}`;
-  const icons = { success: '✅', error: '❌', info: 'ℹ️' };
-  el.innerHTML = `<span>${icons[type] || 'ℹ️'}</span><span>${message}</span>`;
+  const icons = { success: 'OK', error: '!', info: 'i' };
+  el.innerHTML = `<span>${icons[type] || 'i'}</span><span>${message}</span>`;
   container.appendChild(el);
   setTimeout(() => el.remove(), 3500);
 }
@@ -91,50 +92,134 @@ function showPage(pageId) {
   if (page) page.classList.add('active');
 }
 
+function activateNav(containerId, section) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.toggle('active', link.dataset.section === section);
+  });
+}
+
 function navigate() {
   State.init();
   if (!State.token || !State.user) {
-    showPage('page-landing');
+    const path = window.location.pathname;
+    if (path.includes('/signup')) showPage('page-signup');
+    else if (path.includes('/login')) showPage('page-login');
+    else showPage('page-landing');
     return;
   }
+
   if (State.user.role === 'hospital_admin') {
     document.getElementById('hospital-user-name').textContent = State.user.name;
+    document.getElementById('hospital-user-avatar').textContent = State.user.name.charAt(0);
+    const section = localStorage.getItem('pendingAdminSection') || 'overview';
+    localStorage.removeItem('pendingAdminSection');
     showPage('page-hospital');
-    renderAdminSection('overview');
     initAdminNav();
+    renderAdminSection(section);
+    document.getElementById('hospital-page-title').textContent = sectionTitles[section] || 'Overview';
+    activateNav('hospital-nav', section);
   } else {
     document.getElementById('patient-user-name').textContent = State.user.name;
+    document.getElementById('patient-user-avatar').textContent = State.user.name.charAt(0);
+    const section = localStorage.getItem('pendingPatientSection') || 'search';
+    localStorage.removeItem('pendingPatientSection');
     showPage('page-patient');
-    renderPatientSection('search');
     initPatientNav();
+    renderPatientSection(section);
+    document.getElementById('patient-page-title').textContent = sectionTitles[section] || 'Dashboard';
+    activateNav('patient-nav', section);
   }
 }
 
-// ===== EVENT LISTENERS =====
-document.getElementById('btn-get-started-nav')?.addEventListener('click', () => showPage('page-login'));
-document.getElementById('btn-get-started-hero')?.addEventListener('click', () => showPage('page-login'));
-document.getElementById('btn-demo')?.addEventListener('click', () => { toast('Demo video coming soon!', 'info'); });
+// ===== BEGINNER SCREEN =====
+const CONDITIONS = [
+  'Asthma', 'Allergy', 'Anemia', 'Anxiety', 'Bronchitis', 'Blood pressure',
+  'Common cold', 'COVID-19', 'Chest pain', 'Diabetes', 'Dengue fever', 'Dehydration',
+  'Ear infection', 'Eye irritation', 'Fever', 'Flu', 'Gastritis', 'Headache',
+  'Hypertension', 'Insomnia', 'Joint pain', 'Kidney stones', 'Migraine', 'Nausea',
+  'Obesity', 'Pneumonia', 'Sinus infection', 'Thyroid disorder', 'Urinary infection',
+  'Vitamin deficiency', 'Wound care'
+];
+
+function renderConditionResults(items) {
+  const results = document.getElementById('condition-results');
+  if (!results) return;
+  if (!items.length) {
+    results.innerHTML = '<span class="condition-chip">No match yet</span>';
+    return;
+  }
+  results.innerHTML = items.slice(0, 8).map(item => `<span class="condition-chip">${item}</span>`).join('');
+}
+
+function filterConditions({ letter = '', query = '' }) {
+  const q = query.trim().toLowerCase();
+  const filtered = CONDITIONS.filter(item => {
+    const byLetter = letter ? item.toUpperCase().startsWith(letter) : true;
+    const byQuery = q ? item.toLowerCase().includes(q) : true;
+    return byLetter && byQuery;
+  });
+  renderConditionResults(filtered);
+}
+
+function goToLoginWithPatientSection(section = 'search') {
+  const bookingSection = section === 'appointments' ? 'search' : section;
+  localStorage.setItem('pendingPatientSection', bookingSection);
+  showPage('page-login');
+}
+
+function initBeginnerScreen() {
+  document.getElementById('btn-login-nav')?.addEventListener('click', () => showPage('page-login'));
+  document.getElementById('btn-create-nav')?.addEventListener('click', () => showPage('page-signup'));
+  document.getElementById('btn-beginner-book')?.addEventListener('click', () => goToLoginWithPatientSection('search'));
+  document.getElementById('btn-beginner-home')?.addEventListener('click', () => showPage('page-landing'));
+
+  document.querySelectorAll('.beginner-action').forEach(btn => {
+    btn.addEventListener('click', () => goToLoginWithPatientSection(btn.dataset.targetSection || 'search'));
+  });
+
+  document.querySelectorAll('#letter-grid button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#letter-grid button').forEach(item => item.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('condition-search-input').value = '';
+      filterConditions({ letter: btn.dataset.letter });
+    });
+  });
+
+  document.getElementById('condition-search-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    document.querySelectorAll('#letter-grid button').forEach(item => item.classList.remove('active'));
+    filterConditions({ query: document.getElementById('condition-search-input').value });
+  });
+
+  renderConditionResults(CONDITIONS.slice(0, 5));
+}
 
 // ===== NAVIGATION =====
 const sectionTitles = {
-  search: 'Dashboard', appointments: 'Appointments', pharmacy: 'Pharmacy',
-  orders: 'Orders', emergency: 'Emergency Check',
-  overview: 'Overview', profile: 'Hospital Profile', doctors: 'Doctors',
+  search: 'Dashboard',
+  appointments: 'Appointments',
+  pharmacy: 'Pharmacy',
+  orders: 'Medicine Orders',
+  emergency: 'Emergency Check',
+  overview: 'Overview',
+  profile: 'Hospital Profile',
+  doctors: 'Doctors',
   slots: 'Manage Slots'
 };
 
 function initPatientNav() {
   const container = document.getElementById('patient-nav');
   container.querySelectorAll('.nav-link').forEach(link => {
-    // Clone to remove old listeners
     const clone = link.cloneNode(true);
     link.parentNode.replaceChild(clone, link);
     clone.addEventListener('click', () => {
-      container.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      clone.classList.add('active');
       const section = clone.dataset.section;
       renderPatientSection(section);
       document.getElementById('patient-page-title').textContent = sectionTitles[section] || 'Dashboard';
+      activateNav('patient-nav', section);
     });
   });
 }
@@ -145,11 +230,10 @@ function initAdminNav() {
     const clone = link.cloneNode(true);
     link.parentNode.replaceChild(clone, link);
     clone.addEventListener('click', () => {
-      container.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      clone.classList.add('active');
       const section = clone.dataset.section;
       renderAdminSection(section);
       document.getElementById('hospital-page-title').textContent = sectionTitles[section] || 'Overview';
+      activateNav('hospital-nav', section);
     });
   });
 }
@@ -194,8 +278,8 @@ document.getElementById('signup-form').addEventListener('submit', async (e) => {
 document.getElementById('go-signup').addEventListener('click', (e) => { e.preventDefault(); showPage('page-signup'); });
 document.getElementById('go-login').addEventListener('click', (e) => { e.preventDefault(); showPage('page-login'); });
 
-document.getElementById('patient-logout-btn').addEventListener('click', () => { State.clearAuth(); navigate(); });
-document.getElementById('hospital-logout-btn').addEventListener('click', () => { State.clearAuth(); navigate(); });
+document.getElementById('patient-logout-btn').addEventListener('click', () => { State.clearAuth(); showPage('page-landing'); });
+document.getElementById('hospital-logout-btn').addEventListener('click', () => { State.clearAuth(); showPage('page-landing'); });
 
 // ===== MODAL HELPERS =====
 function openModal(id) { document.getElementById(id).classList.add('open'); }
@@ -206,7 +290,6 @@ document.getElementById('modal-reschedule-close').addEventListener('click', () =
 document.getElementById('modal-doctor-close').addEventListener('click', () => closeModal('modal-doctor'));
 document.getElementById('modal-slots-close').addEventListener('click', () => closeModal('modal-slots'));
 
-// Close on overlay click
 ['modal-book', 'modal-reschedule', 'modal-doctor', 'modal-slots'].forEach(id => {
   document.getElementById(id).addEventListener('click', (e) => {
     if (e.target === e.currentTarget) closeModal(id);
@@ -214,27 +297,7 @@ document.getElementById('modal-slots-close').addEventListener('click', () => clo
 });
 
 // ===== INIT =====
-async function fetchLandingStats() {
-  try {
-    const res = await fetch('/api/stats');
-    if (res.ok) {
-      const data = await res.json();
-      const elPatients = document.getElementById('stat-total-patients');
-      const elAppts = document.getElementById('stat-todays-appts');
-      const elDoctors = document.getElementById('stat-doctors-active');
-      const elPharmacy = document.getElementById('stat-pharmacy-fill');
-      
-      if (elPatients) elPatients.textContent = data.total_patients;
-      if (elAppts) elAppts.textContent = data.todays_appts;
-      if (elDoctors) elDoctors.textContent = data.doctors_active;
-      if (elPharmacy) elPharmacy.textContent = data.pharmacy_fill;
-    }
-  } catch (err) {
-    console.error('Failed to fetch stats:', err);
-  }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
+  initBeginnerScreen();
   navigate();
-  fetchLandingStats();
 });

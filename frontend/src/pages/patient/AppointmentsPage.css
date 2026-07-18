@@ -1,0 +1,18 @@
+.appts-page { }
+.appts-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-4); }
+.appts-tab-count { margin-left: 6px; background: rgba(255,255,255,0.08); padding: 1px 8px; border-radius: var(--radius-full); font-size: var(--text-xs); }
+.appts-list { display: flex; flex-direction: column; gap: var(--space-4); }
+.appts-card { padding: var(--space-5); display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.appts-card-left { display: flex; align-items: flex-start; gap: var(--space-4); flex: 1; min-width: 0; }
+.appts-date-box { width: 56px; height: 56px; border-radius: var(--radius-sm); background: var(--secondary-muted); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+.appts-date-month { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--secondary); }
+.appts-date-day { font-size: var(--text-xl); font-weight: var(--weight-bold); color: var(--text-primary); line-height: 1; }
+.appts-info { min-width: 0; }
+.appts-doctor { font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--text-primary); }
+.appts-spec { font-size: var(--text-sm); color: var(--text-tertiary); margin-top: 2px; }
+.appts-meta { display: flex; gap: var(--space-4); margin-top: var(--space-2); font-size: var(--text-xs); color: var(--text-muted); }
+.appts-meta span { display: flex; align-items: center; gap: 4px; }
+.appts-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2); flex-shrink: 0; }
+.appts-fee { font-size: var(--text-base); font-weight: var(--weight-bold); color: var(--accent); }
+.appts-actions { display: flex; gap: var(--space-2); }
+@media (max-width: 640px) { .appts-card { flex-direction: column; } .appts-card-right { align-items: flex-start; } }

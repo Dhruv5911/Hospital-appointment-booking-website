@@ -1,6 +1,4 @@
 from flask import Blueprint, request, jsonify
-import os, joblib
-import numpy as np
 
 ml_bp = Blueprint('ml', __name__)
 
@@ -55,9 +53,9 @@ def predict_emergency(symptoms_text: str):
         'matched_emergency': matched_emergency,
         'matched_non_emergency': matched_non_emergency,
         'recommendation': (
-            '🚨 EMERGENCY: Please visit the nearest Emergency Room immediately!'
+            'EMERGENCY: Please visit the nearest emergency room immediately.'
             if is_emergency else
-            '✅ Non-Emergency: Schedule a regular appointment with a doctor.'
+            'Non-emergency: Schedule a regular appointment with a doctor.'
         )
     }
 

@@ -1,0 +1,220 @@
+/* ═══════════════════════════════════════════════════════════
+   Login Page — Glassmorphism + Animated Blobs
+   ═══════════════════════════════════════════════════════════ */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Animated Blobs ───────────────────────────────────── */
+.login-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.login-blob-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent);
+  top: -100px;
+  right: -100px;
+  animation: blob 8s infinite;
+}
+
+.login-blob-2 {
+  width: 350px;
+  height: 350px;
+  background: var(--secondary);
+  bottom: -80px;
+  left: -80px;
+  animation: blob 10s infinite reverse;
+}
+
+.login-blob-3 {
+  width: 250px;
+  height: 250px;
+  background: var(--purple);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: blob 12s infinite;
+  opacity: 0.15;
+}
+
+/* ─── Container ────────────────────────────────────────── */
+.login-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ─── Logo ─────────────────────────────────────────────── */
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.login-logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-primary);
+}
+
+.login-logo-text {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+/* ─── Card ─────────────────────────────────────────────── */
+.login-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-xl);
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: var(--space-6);
+  }
+}
+
+/* ─── Header ───────────────────────────────────────────── */
+.login-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.login-header h1 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+.login-header p {
+  font-size: var(--text-base);
+  color: var(--text-tertiary);
+}
+
+/* ─── Form ─────────────────────────────────────────────── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.login-pw-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  transition: color var(--transition-fast);
+}
+
+.login-pw-toggle:hover {
+  color: var(--text-secondary);
+}
+
+/* ─── Options Row ──────────────────────────────────────── */
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-remember-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.login-forgot {
+  font-size: var(--text-sm);
+  color: var(--accent);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+
+.login-forgot:hover {
+  text-decoration: underline;
+}
+
+/* ─── Submit ───────────────────────────────────────────── */
+.login-submit {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+/* ─── Social ───────────────────────────────────────────── */
+.login-social {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+}
+
+.login-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.login-social-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* ─── Signup Link ──────────────────────────────────────── */
+.login-signup {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.login-signup a {
+  color: var(--accent);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+
+.login-signup a:hover {
+  text-decoration: underline;
+}
